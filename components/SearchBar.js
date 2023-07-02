@@ -38,8 +38,7 @@ const SearchBar = (props) => {
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         onKeyDown={(e) => {
-          if (e.code === "Enter") submitHandler();
-          alert(e.code);
+          if (e.key === "Enter") submitHandler();
         }}
       />
       <SVG
