@@ -33,17 +33,18 @@ const SearchBar = (props) => {
         type="text"
         value={input}
         placeholder="search your query"
-        className="flex-1 w-0 py-1 outline-none text-sm md:text-base"
+        className="flex-1 w-0 py-1 text-sm outline-none md:text-base"
         onChange={inputChangeHandler}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         onKeyDown={(e) => {
           if (e.code === "Enter") submitHandler();
+          alert(e.code);
         }}
       />
       <SVG
         svg={Search}
-        className="w-5 stroke-gray-500 fill-white cursor-pointer hover:stroke-gray-700"
+        className="w-5 cursor-pointer stroke-gray-500 fill-white hover:stroke-gray-700"
         onClick={submitHandler}
       />
     </div>

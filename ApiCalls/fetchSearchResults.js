@@ -4,7 +4,7 @@ const fetchSearchResults = async (query) => {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "ff8e1b5ee8msha5b4d142bb40a4ep137546jsn2533430a24a6",
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_API_KEY,
         "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
       },
     };

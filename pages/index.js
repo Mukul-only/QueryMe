@@ -9,12 +9,12 @@ import { useState } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState();
-  console.log(result);
+
   return (
     <>
       <div className="border-b border-gray-300">
-        <Card className="flex justify-between items-center space-x-4">
-          <SVG svg={Brand} className="w-32 md:w-44  hidden md:block" />
+        <Card className="flex items-center justify-between space-x-4">
+          <SVG svg={Brand} className="hidden w-32 md:w-44 md:block" />
           <SVG svg={Brand_M} className="w-5 md:hidden" />
           <SearchBar setLoading={setLoading} setResult={setResult} />
         </Card>
@@ -34,10 +34,10 @@ export default function Home() {
             <SearchResult key={item.id} data={item} />
           ))}
         {result && result.totalCount === 0 && (
-          <p className="text-center py-12 text-gray-500">No Result Found !</p>
+          <p className="py-12 text-center text-gray-500">No Result Found !</p>
         )}
         {!result && (
-          <p className="text-center py-12 text-gray-500">
+          <p className="py-12 text-center text-gray-500">
             QueryMe : Resolve your queries!
           </p>
         )}
