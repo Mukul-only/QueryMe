@@ -9,6 +9,7 @@ import { useState } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState();
+  const [error, setError] = useState();
 
   return (
     <>
@@ -16,7 +17,11 @@ export default function Home() {
         <Card className="flex items-center justify-between space-x-4">
           <SVG svg={Brand} className="hidden w-32 md:w-44 md:block" />
           <SVG svg={Brand_M} className="w-5 md:hidden" />
-          <SearchBar setLoading={setLoading} setResult={setResult} />
+          <SearchBar
+            setLoading={setLoading}
+            setResult={setResult}
+            setError={setError}
+          />
         </Card>
       </div>
       <Card>
@@ -29,16 +34,21 @@ export default function Home() {
           </div>
         )}
         {result &&
-          result.totalCount > 0 &&
-          result.value.map((item) => (
+          result?.totalCount > 0 &&
+          result?.value.map((item) => (
             <SearchResult key={item.id} data={item} />
           ))}
-        {result && result.totalCount === 0 && (
+        {result && result?.totalCount === 0 && (
           <p className="py-12 text-center text-gray-500">No Result Found !</p>
         )}
-        {!result && (
+        {!result && !error && (
           <p className="py-12 text-center text-gray-500">
             QueryMe : Resolve your queries!
+          </p>
+        )}
+        {error && (
+          <p className="max-w-xl py-12 mx-auto text-sm text-center text-red-500 break-words md:text-base">
+            {error}
           </p>
         )}
       </Card>

@@ -10,11 +10,16 @@ const fetchSearchResults = async (query) => {
     };
 
     const response = await fetch(url, options);
+    if (!response.ok) {
+      const err = await response.json();
+
+      throw new Error(err.message);
+    }
     const result = await response.json();
     // console.log(result);
     return result;
   } catch (error) {
-    return new Error(error.message);
+    return { error: true, message: error.message };
   }
 };
 export default fetchSearchResults;

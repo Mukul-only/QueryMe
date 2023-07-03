@@ -15,7 +15,11 @@ const SearchBar = (props) => {
     if (input.trim().length > 0) {
       props.setLoading(true);
       fetchSearchResults(input).then((e) => {
-        props.setResult(e);
+        if (e.error) {
+          props.setError(e.message);
+        } else {
+          props.setResult(e);
+        }
         props.setLoading(false);
         inputRef.current.blur();
       });
